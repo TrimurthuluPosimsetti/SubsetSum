@@ -15,25 +15,23 @@ class Main {
     for(int i=0;i<n;i++){
       c[0]=a[i];
       subsetSum(a,c,1,k,i+1);
+      if(c[0]==k){
+      System.out.println(c[0]);
+    }
     }
   }
   public static void subsetSum(int a[],int c[],int in,int k,int x){
     for(  int i=x;i<a.length;i++){
-      System.out.println(a[i]);
-            for(int j=0;j<c.length;j++){
-              System.out.print(c[j]+" ");
-          }
       if(place(c,a[i])){
           c[in]=a[i];
           int sum=0;
           for(int j=0;j<c.length;j++){
               sum=sum+c[j];
-              System.out.print(c[j]+" ");
           }
-          System.out.println(sum);
           if(sum==k){
-            for(int j=0;j<c.length;j++)
-            System.out.print(c[j]+" ");
+            for(int j=0;j<c.length;j++){
+            if(c[j]!=0)
+            System.out.print(c[j]+" ");}
             System.out.println();
           }
           if(in==a.length-1){}
@@ -43,9 +41,10 @@ class Main {
           }
       }
     }
+    c[in]=0;
   }
   public static boolean place(int c[],int v){
-    System.out.println(v);
+    //System.out.println(v);
     for(int i=0;i<c.length;i++){
       if(c[i]==v){
         return false;
